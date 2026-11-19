@@ -3,12 +3,14 @@ package com.stark.taskmananger.infrastructure.repository;
 import com.stark.taskmananger.domain.Task;
 import com.stark.taskmananger.domain.TaskId;
 import com.stark.taskmananger.domain.TaskRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class InMemoryTaskRepositoryImpl implements TaskRepository {
 
     private Map<TaskId, Task> storage = new HashMap<>();
