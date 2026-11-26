@@ -5,6 +5,7 @@ import com.stark.taskmananger.domain.TaskId;
 import com.stark.taskmananger.infrastructure.http.request.CreateTaskRequest;
 import com.stark.taskmananger.infrastructure.http.request.UpdateTaskRequest;
 import com.stark.taskmananger.infrastructure.http.response.TaskResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class TaskController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    TaskResponse createTask (@RequestBody CreateTaskRequest request) {
+    TaskResponse createTask (@Valid @RequestBody CreateTaskRequest request) {
         var input = request.toInput();
         var output = createTaskUseCase.execute(input);
 
