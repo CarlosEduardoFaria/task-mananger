@@ -1,8 +1,7 @@
 package com.stark.taskmananger.application;
 
-import com.stark.taskmananger.domain.Task;
+import com.stark.taskmananger.domain.TaskId;
 import com.stark.taskmananger.domain.TaskRepository;
-import com.stark.taskmananger.domain.exception.TaskNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,10 +13,7 @@ public class DeleteTaskUseCase {
         this.taskRepository = taskRepository;
     }
 
-    public void execute (Task task) {
-        if (taskRepository.findById(task.getId()).isEmpty()) {
-            throw new TaskNotFoundException(task.getId());
-        }
-        taskRepository.delete(task);
+    public void execute (TaskId id) {
+        taskRepository.delete(id);
     }
 }

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public class InMemoryTaskRepositoryImpl implements TaskRepository {
 
-    private Map<TaskId, Task> storage = new HashMap<>();
+    private final Map<TaskId, Task> storage = new HashMap<>();
 
     @Override
     public Task save(Task task) {
@@ -32,7 +32,7 @@ public class InMemoryTaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public void delete(Task task) {
-        storage.remove(task.getId());
+    public void delete(TaskId task) {
+        storage.remove(task);
     }
 }
